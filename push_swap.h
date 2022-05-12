@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:12:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/12 14:49:26 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/12 19:54:54 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	ft_putnbr_fd(int n, int fd);
 
 //		parse.c
 void		parse(char **av, int ac, t_list **lst);
+
+//		lst_cut
+void		lst_cut(t_list **lst_a/*, t_list **lst_b*/);
 
 //		movement.c
 void		swap(t_list **lst);
@@ -65,5 +68,6 @@ int			ft_is_sort(t_list *lst);
 
 //		utils_1.c
 int			ft_abs(int nb);
+int			max(int a, int b);
 
 #endif

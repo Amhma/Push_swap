@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:27:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/12 12:32:16 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/12 19:55:02 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,11 @@ int	ft_abs(int nb)
 	if (nb < 0)
 		return (nb * -1);
 	return (nb);
+}
+
+int	max(int a, int b)
+{
+	if (a < ft_abs(b))
+		return (b);
+	return (a);
 }
