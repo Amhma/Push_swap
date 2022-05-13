@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:56:08 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/13 20:03:26 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:20:41 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,7 @@ void	fill_lst(t_list **lst, int *tab)
 	elem = ft_list_at(*lst, i);
 	nb = elem->nb;
 	index = tab[i];
-	i = max_tab(tab) - 1;
-	while (i >= 0)
+	while (--i >= 0)
 	{
 		elem = ft_list_at(*lst, i);
 		if (tab[i] == index - 1 && elem->nb < nb)
@@ -80,7 +79,6 @@ void	fill_lst(t_list **lst, int *tab)
 		}
 		else
 			elem->stack = 'b';
-		i--;
 	}
 }
 
@@ -103,9 +101,9 @@ void	max_lis(t_list **lst)
 	}
 	else
 	{
+		ft_rrotate(lst);
 		free(tab_down);
 		fill_lst(lst, tab_up);
-		ft_rrotate(lst);
 		free(tab_up);
 	}
 }
