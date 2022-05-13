@@ -1,46 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_1.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/12 12:27:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/13 20:01:08 by amahla           ###   ########.fr       */
+/*   Created: 2022/05/02 12:31:18 by amahla            #+#    #+#             */
+/*   Updated: 2022/05/13 17:43:15 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int	ft_abs(int nb)
+t_list	*ft_lstnew(int nb, int value, char c)
 {
-	if (nb < 0)
-		return (nb * -1);
-	return (nb);
-}
+	t_list	*elem;
 
-int	max_tab(int *tab)
-{
-	int	i;
-	int	nb[2];
-
-	i = 0;
-	nb[0] = tab[0];
-	while (tab[i])
-	{
-		if (tab[i] > nb[0])
-		{
-			nb[0] = tab[i];
-			nb[1] = i;
-		}
-		i++;
-	}
-	return (nb[1]);
-}
-
-int	max(int a, int b)
-{
-	if (a < ft_abs(b))
-		return (b);
-	return (a);
+	elem = malloc(sizeof(t_list));
+	if (!elem)
+		return (NULL);
+	elem->nb = nb;
+	elem->value = value;
+	elem->stack = c;
+	elem->next = NULL;
+	return (elem);
 }

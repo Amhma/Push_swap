@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:12:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/12 19:54:54 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/13 18:28:20 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ typedef struct s_list
 {
 	int				nb;
 	int				value;
-	char			list;
+	char			stack;
 	struct s_list	*next;
 }				t_list;
 
@@ -31,8 +31,8 @@ void	ft_putnbr_fd(int n, int fd);
 //		parse.c
 void		parse(char **av, int ac, t_list **lst);
 
-//		lst_cut
-void		lst_cut(t_list **lst_a/*, t_list **lst_b*/);
+//		lst_patch.c
+void		lst_patch(t_list **lst_a);
 
 //		movement.c
 void		swap(t_list **lst);
@@ -44,10 +44,12 @@ void		rotate(t_list **lst);
 void		r_rotate(t_list **lst_a, t_list **lst_b);
 
 //		movement3.c
+void		ft_rrotate(t_list **lst);
 void		rev_rotate(t_list **lst);
 void		r_rev_rotate(t_list **lst_a, t_list **lst_b);
 
 //		libft
+void		*ft_calloc(size_t nmemb, size_t size);
 int			ft_strlen(const char *s);
 int			ft_isdigit(int c);
 void		ft_putendl_fd(char *s, int fd);
@@ -67,6 +69,7 @@ t_list		*ft_list_find(t_list *lst, int (*cmp)());
 int			ft_is_sort(t_list *lst);
 
 //		utils_1.c
+int			max_tab(int *tab);
 int			ft_abs(int nb);
 int			max(int a, int b);
 

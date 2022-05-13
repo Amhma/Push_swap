@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 20:09:13 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/12 19:54:59 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/13 18:35:19 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	rev_rotate(t_list **lst)
 {
 	if (!lst)
 		return ;
-	else if (*lst && (*lst)->next && (*lst)->list == 'a')
+	else if (*lst && (*lst)->next && (*lst)->stack == 'a')
 	{
 		ft_rrotate(lst);
 		ft_putendl_fd("rra", 1);
 	}
-	else if (*lst && (*lst)->next && (*lst)->list == 'b')
+	else if (*lst && (*lst)->next && (*lst)->stack == 'b')
 	{
 		ft_rrotate(lst);
 		ft_putendl_fd("rrb", 1);

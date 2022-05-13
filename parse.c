@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:54:02 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/12 14:58:07 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/13 18:56:44 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,13 +64,13 @@ void	parse(char **av, int ac, t_list **lst)
 		{
 			ft_putendl_fd("Error", 2);
 			ft_lstclear(lst);
-			exit(EXIT_SUCCESS);
+			exit(EXIT_FAILURE);
 		}
 		elem = ft_lstnew((int)nb, 0, 'a');
 		if (!elem)
 		{
 			ft_lstclear(lst);
-			exit(EXIT_SUCCESS);
+			exit(EXIT_FAILURE);
 		}
 		ft_lstadd_front(lst, elem);
 		i++;

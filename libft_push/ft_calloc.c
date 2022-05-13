@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 12:31:18 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/12 12:53:33 by amahla           ###   ########.fr       */
+/*   Created: 2022/05/02 12:27:43 by amahla            #+#    #+#             */
+/*   Updated: 2022/05/13 17:30:25 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-t_list	*ft_lstnew(int nb, int value, char c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_list	*elem;
+	void	*dst;
+	size_t	i;
 
-	elem = malloc(sizeof(t_list));
-	if (!elem)
+	i = 0;
+	dst = malloc(nmemb * size);
+	if (!dst)
 		return (NULL);
-	elem->nb = nb;
-	elem->value = value;
-	elem->list = c;
-	elem->next = NULL;
-	return (elem);
+	while (i < nmemb * size)
+		*((unsigned char *)dst + i++) = 0;
+	return (dst);
 }

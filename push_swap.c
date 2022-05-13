@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:31:10 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/12 19:49:26 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/13 18:36:24 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_lst_list(t_list *lst)
 {
 	while (lst)
 	{
-		write(1, &(lst->list), 1);
+		write(1, &(lst->stack), 1);
 		if (lst->next)
 			write(1, " ", 1);
 		lst = lst->next;
@@ -60,7 +60,7 @@ int	main(int ac, char **av)
 		parse(av, ac, &lst_a);
 		print_lst(lst_a);
 		print_lst(lst_b);
-		lst_cut(&lst_a/*, &lst_b*/);
+		lst_patch(&lst_a);
 		print_lst(lst_a);
 		print_lst_list(lst_a);
 		print_lst_value(lst_b);
