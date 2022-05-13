@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:31:10 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/13 18:36:24 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/13 20:35:26 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ int	main(int ac, char **av)
 		print_lst(lst_a);
 		print_lst_list(lst_a);
 		print_lst_value(lst_b);
+		lst_split(&lst_a, &lst_b);
+		print_lst(lst_a);
+		print_lst(lst_b);
 	}
 	exit(EXIT_SUCCESS);
 }
