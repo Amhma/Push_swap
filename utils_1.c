@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:27:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/13 20:38:03 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/14 20:33:09 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,25 @@ int	max_tab(int *tab)
 	return (nb[1]);
 }
 
+t_list	*min_value(t_list *lst)
+{
+	t_list	*elem;
+	int		nb;
+
+	nb = lst->value;
+	elem = lst;
+	while (lst)
+	{
+		if (ft_abs(lst->value) < nb)
+		{
+			nb = lst->value;
+			elem = lst;
+		}
+		lst = lst->next;
+	}
+	return (elem);
+}			
+
 int	max_list(t_list *lst)
 {
 	t_list	*elem;
@@ -49,15 +68,23 @@ int	max_list(t_list *lst)
 	{
 		if (elem->nb > nb)
 			nb = elem->nb;
-		elem = elem->nb;
+		elem = elem->next;
 	}
 	return (nb);
 }
 
-
-int	max(int a, int b)
+int	min_list(t_list *lst)
 {
-	if (a < ft_abs(b))
-		return (b);
-	return (a);
+	t_list	*elem;
+	int		nb;
+
+	elem = lst;
+	nb = elem->nb;
+	while (elem)
+	{
+		if (elem->nb < nb)
+			nb = elem->nb;
+		elem = elem->next;
+	}
+	return (nb);
 }

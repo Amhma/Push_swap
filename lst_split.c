@@ -6,11 +6,12 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:26:25 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/13 20:43:17 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/14 20:28:06 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
+#include<stdio.h>
 
 int	search_med(t_list *lst)
 {
@@ -24,26 +25,103 @@ int	search_med(t_list *lst)
 		elem = elem->next;
 	}
 	elem = lst;
-	while (lst)
+	while (elem)
 	{
-		next = lst->next;
-		while (next);
+		next = lst;
+		while (next)
 		{
 			if (elem->nb < next->nb)
 				(elem->value)++;
-			else
+			else if (elem->nb > next->nb)
 				(elem->value)--;
-			next= next->next;
+			next = next->next;
 		}
 		elem = elem->next;
 	}
+	elem = min_value(lst);
+	return (elem->value);
 }
 
-void	set_nb_stroke(t_list **lst_a)
+int	split_more_med(t_list *lst, int *count)
 {
-	
+	t_list	*elem;
+	int		value;
+
+	elem = lst;
+	while (elem && elem->stack == 'a')
+		elem = elem->next;
+	if (!elem)
+		return (0);
+	(*count)++;
+	value = elem->value;
+	while (elem)
+	{
+		if (ft_abs(elem->value) < value && elem->stack == 'b')
+		{
+			value = elem->value;
+			(*count)++;
+		}
+		elem = elem->next;
+	}
+	return (value);
+}
+
+int	split_less_med(t_list *lst, int med, int *count)
+{
+	t_list	*elem;
+	int		value;
+
+	elem = lst;
+	while ((elem && elem->stack == 'a') || (elem && elem->stack == 'b' && elem->nb > med))
+		elem = elem->next;
+	if (!elem)
+		return (split_more_med(lst, count));
+	(*count)++;
+	value = elem->value;
+	while (elem)
+	{
+		if (ft_abs(elem->value) < value && elem->stack == 'b' && elem->nb <= med)
+		{
+			value = elem->value;
+			(*count)++;
+		}
+		elem = elem->next;
+	}
+	return (value);
+}
+
+int	push_it(t_list **lst_a, t_list **lst_b, int med, int *count)
+{
+	push(lst_a, lst_b, 'a');
+	set_nb_stroke(*lst_a);
+	*count = 0;
+	return (split_less_med(*lst_a, med, count));
+}
 
 void	lst_split(t_list **lst_a, t_list **lst_b)
 {
 	int	med;
-	
+	int	value;
+	int	count;
+
+	count = 0;
+	med = search_med(*lst_a);
+	set_nb_stroke(*lst_a);
+	value = split_less_med(*lst_a, med, &count);
+	while (count)
+	{
+		if (value == -2)
+			swap(lst_a, 'a');
+		else if (value != 0)
+		{
+			if (value < 0)
+			{
+				rev_rotate(lst_a, 'a');
+				value = (value) * -1;
+			}
+			while (value--)
+				rotate(lst_a, 'a');
+		}
+		value = push_it(lst_a, lst_b, med, &count);
+	}
+}

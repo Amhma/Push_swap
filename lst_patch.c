@@ -6,12 +6,11 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:56:08 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/13 20:20:41 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/14 17:06:57 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-#include<stdio.h>
 
 int	*init_tab(t_list **lst)
 {
@@ -113,7 +112,7 @@ void	lst_patch(t_list **lst)
 	if (ft_is_sort(*lst) != 0)
 	{
 		if (ft_is_sort(*lst) > 0)
-			rev_rotate(lst);
+			rev_rotate(lst, 'a');
 		exit(EXIT_SUCCESS);
 	}
 	max_lis(lst);

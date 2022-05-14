@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 20:09:13 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/13 18:34:33 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/14 17:05:27 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,16 +24,16 @@ void	ft_rotate(t_list **lst)
 	prev->next = NULL;
 }
 
-void	rotate(t_list **lst)
+void	rotate(t_list **lst, char c)
 {
 	if (!lst)
 		return ;
-	else if (*lst && (*lst)->next && (*lst)->stack == 'a')
+	else if (*lst && (*lst)->next && c == 'a')
 	{
 		ft_rotate(lst);
 		ft_putendl_fd("ra", 1);
 	}
-	else if (*lst && (*lst)->next && (*lst)->stack == 'b')
+	else if (*lst && (*lst)->next && c == 'b')
 	{
 		ft_rotate(lst);
 		ft_putendl_fd("rb", 1);
