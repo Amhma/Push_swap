@@ -66,7 +66,10 @@ int	main(int ac, char **av)
 		print_lst_value(lst_b);
 		lst_split(&lst_a, &lst_b);
 		print_lst(lst_a);
-//		print_lst_value(lst_a);
+		print_lst(lst_b);
+		write(1, "\n", 1);
+		sort_list(&lst_a, &lst_b);
+		print_lst(lst_a);
 		print_lst(lst_b);
 		ft_lstclear(&lst_a);
 		ft_lstclear(&lst_b);

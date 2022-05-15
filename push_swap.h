@@ -39,6 +39,9 @@ void		lst_patch(t_list **lst_a);
 //		lst_split.c
 void		lst_split(t_list **lst_a, t_list **lst_b);
 
+//		lst_solve
+void		sort_list(t_list **lst_a, t_list **lst_b);
+
 //		movement.c
 void		swap(t_list **lst, char c);
 void		s_swap(t_list **lst_a, t_list **lst_b);
@@ -72,6 +75,7 @@ void		ft_lstclear(t_list **lst);
 t_list		*ft_list_at(t_list *begin_list, unsigned int nbr);
 t_list		*ft_list_find(t_list *lst, int (*cmp)());
 int			ft_is_sort(t_list *lst);
+int			ft_is_sort_rotate(t_list *lst);
 
 //		utils_1.c
 t_list		*min_value(t_list *lst);
@@ -81,9 +85,11 @@ int			max_tab(int *tab);
 int			ft_abs(int nb);
 
 //		utils_2.c
+int			tab_max_len(int *tab, int size);
 int			max(int a, int b);
 t_list		*find_next_elem(t_list *lst, int nb_b);
 t_list		*find_elem(t_list *lst, int nb);
 void		set_nb_stroke(t_list *lst);
+void		set_nb_stroke_asc(t_list *lst);
 
 #endif
