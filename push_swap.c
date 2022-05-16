@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:31:10 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/14 18:40:37 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 16:28:11 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,16 +58,16 @@ int	main(int ac, char **av)
 	if (ac > 1)
 	{
 		parse(av, ac, &lst_a);
-		print_lst(lst_a);
-		print_lst(lst_b);
+//		print_lst(lst_a);
+//		print_lst(lst_b);
 		lst_patch(&lst_a);
-		print_lst(lst_a);
-		print_lst_list(lst_a);
-		print_lst_value(lst_b);
+//		print_lst(lst_a);
+//		print_lst_list(lst_a);
+//		print_lst_value(lst_b);
 		lst_split(&lst_a, &lst_b);
-		print_lst(lst_a);
-		print_lst(lst_b);
-		write(1, "\n", 1);
+//		print_lst(lst_a);
+//		print_lst(lst_b);
+//		write(1, "\n", 1);
 		sort_list(&lst_a, &lst_b);
 		print_lst(lst_a);
 		print_lst(lst_b);

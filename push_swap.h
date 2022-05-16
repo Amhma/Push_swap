@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:12:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 14:20:14 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 16:17:44 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ void		ft_putendl_fd(char *s, int fd);
 long long	ft_atoi(const char *nptr);
 
 //		libft_lst
+char		**ft_split(char const *s, char c);
+void		ft_free_split(char **split);
 t_list		*ft_lstnew(int nb, int value, char c);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 void		ft_lstadd_back(t_list **lst, t_list *new);

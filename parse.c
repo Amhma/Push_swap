@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:54:02 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/13 18:56:44 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 16:22:00 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,30 +50,42 @@ int	check_arg(char *str, long long nb)
 	return (0);
 }
 
+void	ft_error(t_list **lst, char **split, int i)
+{
+	if (i)
+		ft_putendl_fd("Error", 2);
+	if (split)
+		ft_free_split(split);
+	ft_lstclear(lst);
+	exit(EXIT_FAILURE);
+}
+
 void	parse(char **av, int ac, t_list **lst)
 {
 	int			i;
+	int			y;
 	long long	nb;
 	t_list		*elem;
+	char		**arg;
 
-	i = 1;
-	while (i < ac)
+	y = 0;
+	while (++y < ac)
 	{
-		nb = ft_atoi(av[i]);
-		if (!*av[i] || !check_arg(av[i], nb) || !check_list(lst, (int)nb))
+		i = -1;
+		arg = ft_split(av[y], ' ');
+		if (!arg)
+			ft_error(lst, arg, 0);
+		while (arg[++i])
 		{
-			ft_putendl_fd("Error", 2);
-			ft_lstclear(lst);
-			exit(EXIT_FAILURE);
+			nb = ft_atoi(arg[i]);
+			if (!*arg[i] || !check_arg(arg[i], nb) || !check_list(lst, (int)nb))
+				ft_error(lst, arg, 1);
+			elem = ft_lstnew((int)nb, 0, 'a');
+			if (!elem)
+				ft_error(lst, arg, 0);
+			ft_lstadd_front(lst, elem);
 		}
-		elem = ft_lstnew((int)nb, 0, 'a');
-		if (!elem)
-		{
-			ft_lstclear(lst);
-			exit(EXIT_FAILURE);
-		}
-		ft_lstadd_front(lst, elem);
-		i++;
+		ft_free_split(arg);
 	}
 }
-
+		
