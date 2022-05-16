@@ -6,22 +6,21 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 20:09:13 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 14:10:58 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 17:13:17 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-
-void	ft_rotate(t_list **lst)
+void    ft_rotate(t_list **lst)
 {
-	t_list	*elem;
-	t_list	*prev;
+    t_list  *elem;
+    t_list  *prev;
 
-	elem = ft_lstlast(*lst);
-	prev = *lst;
-	*lst = (*lst)->next;
-	elem->next = prev;
-	prev->next = NULL;
+    elem = ft_lstlast(*lst);
+    prev = *lst;
+    *lst = (*lst)->next;
+    elem->next = prev;
+    prev->next = NULL;
 }
 
 void	rotate(t_list **lst, char c)

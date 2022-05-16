@@ -6,11 +6,12 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:31:10 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 16:28:11 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 19:05:29 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
+#include<stdio.h>
 
 void	print_lst(t_list *lst)
 {
@@ -69,8 +70,8 @@ int	main(int ac, char **av)
 //		print_lst(lst_b);
 //		write(1, "\n", 1);
 		sort_list(&lst_a, &lst_b);
-		print_lst(lst_a);
-		print_lst(lst_b);
+//		print_lst(lst_a);
+//		print_lst(lst_b);
 		ft_lstclear(&lst_a);
 		ft_lstclear(&lst_b);
 	}

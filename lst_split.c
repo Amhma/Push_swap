@@ -6,12 +6,11 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:26:25 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 15:46:12 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 19:22:02 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
-#include<stdio.h>
 
 int	search_med(t_list *lst)
 {
@@ -92,7 +91,7 @@ int	split_less_med(t_list *lst, int med, int *count)
 
 int	push_it(t_list **lst_a, t_list **lst_b, int med, int *count)
 {
-	push(lst_a, lst_b, 'a');
+	push(lst_a, lst_b, 'b');
 	set_nb_stroke(*lst_a);
 	*count = 0;
 	return (split_less_med(*lst_a, med, count));
@@ -111,8 +110,8 @@ void	lst_split(t_list **lst_a, t_list **lst_b)
 	value = split_less_med(*lst_a, med, &count);
 	while (count)
 	{
-		elem = ft_list_at(*lst_a, ft_lstsize(*lst_a) - 2);
-		if (elem->stack == 'b')
+		elem = *lst_a;
+		if (elem->next && elem->next->stack == 'b')
 			swap(lst_a, 'a');
 		else if (value != 0)
 		{

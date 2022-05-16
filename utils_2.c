@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:27:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 14:17:51 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 18:26:24 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ void	set_nb_stroke(t_list *lst)
 	while (i < size)
 	{
 		elem = ft_list_at(lst, i);
-		if (i < size / 2)
-			elem->value = i + 1;
+		if (i <= size / 2)
+			elem->value = i;
 		else
-			elem->value = i - size + 1;
+			elem->value = i - size;
 		i++;
 	}
 }

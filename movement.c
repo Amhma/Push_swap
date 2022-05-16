@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:11:28 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/14 17:04:52 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 19:30:47 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,15 @@
 
 void	ft_swap(t_list **lst)
 {
-	t_list	*next;
-	t_list	*prev;
 	t_list	*elem;
 
-	elem = *lst;
-	next = elem->next;
-	prev = NULL;
-	while (next->next)
+	if (*lst && (*lst)->next)
 	{
-		prev = elem;
-		elem = next;
-		next = next->next;
+		elem = (*lst)->next;
+		(*lst)->next = elem->next;
+		elem->next = *lst;
+		*lst = elem;
 	}
-	elem->next = next->next;
-	next->next = elem;
-	if (!prev)
-		*lst = next;
-	else
-		prev->next = next;
 }
 
 void	swap(t_list **lst, char c)
@@ -66,25 +56,19 @@ void	s_swap(t_list **lst_a, t_list **lst_b)
 void	push(t_list **lst_src, t_list **lst_dst, char src)
 {
 	t_list	*elem;
-	t_list	*prev;
 
 	if (!*lst_src)
 		return ;
 	elem = *lst_src;
-	prev = NULL;
+	*lst_src = (*lst_src)->next;
 	if (src == 'b')
 		ft_putendl_fd("pb", 1);
 	else
 		ft_putendl_fd("pa", 1);
-	while (elem->next)
-	{
-		prev = elem;
-		elem = elem->next;
-	}
-	if (prev)
-		prev->next = NULL;
+	if (src == 'b')
+		elem->stack = 'b';
 	else
-		*lst_src = NULL;
-	elem->stack = 'b';
-	ft_lstadd_back(lst_dst, elem);
+		elem->stack = 'a';
+	elem->next = NULL;
+	ft_lstadd_front(lst_dst, elem);
 }

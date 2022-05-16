@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:53:15 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 15:38:55 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 19:21:49 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int	calcultator_stroke(t_list *elem_a, t_list *elem_b, t_list *lst_a, t_list *ls
 		return (max(ft_abs(elem_a->value), ft_abs(elem_b->value)));
 
 	else if (elem_a->value < 0
-		&& elem_b->value + ft_abs(elem_a->value) > max(i + 1, elem_b->value))
-		return (max(i + 1, elem_b->value));
+		&& elem_b->value + ft_abs(elem_a->value) > max(i, elem_b->value))
+		return (max(i, elem_b->value));
 
 	else if (elem_b->value < 0
-		&& elem_a->value + ft_abs(elem_b->value) > max(j + 1, elem_a->value))
-		return (max(j + 1, elem_a->value));
+		&& elem_a->value + ft_abs(elem_b->value) > max(j, elem_a->value))
+		return (max(j, elem_a->value));
 
 	else
 		return (ft_abs(elem_b->value) + ft_abs(elem_a->value));
@@ -99,10 +99,10 @@ void	solve(t_list **lst_a, t_list **lst_b, t_list *elem_b, t_list *elem_a)
 
 	if (elem_a->value < 0
 		&& elem_b->value + ft_abs(elem_a->value) > max(i + 1, elem_b->value))
-		elem_a->value = i + 1;
+		elem_a->value = i;
 	else if (elem_b->value < 0
 		&& elem_a->value + ft_abs(elem_b->value) > max(j + 1, elem_a->value))
-		elem_b->value = j + 1;
+		elem_b->value = j;
 
 	while (elem_a->value < 0 || elem_b->value < 0)
 	{
@@ -157,7 +157,7 @@ void	sort_list(t_list **lst_a, t_list **lst_b)
 			solve(lst_a, lst_b, best_move, find_elem(*lst_a, min_list(*lst_a)));
 		else
 			solve(lst_a, lst_b, best_move, find_next_elem(*lst_a, best_move->nb));
-		push(lst_b, lst_a, 'b');
+		push(lst_b, lst_a, 'a');
 		if (stroke)
 			free(stroke);
 //		print_lst(*lst_a);
@@ -174,9 +174,11 @@ void	sort_list(t_list **lst_a, t_list **lst_b)
 	if (i < ft_lstsize(*lst_a) / 2)
 		best_move->value = i;
 	else
-		best_move->value = i - ft_lstsize(*lst_a);		
-	while ((best_move->value)++ < 0)
-		rev_rotate(lst_a, 'a');
-	while ((best_move->value)--)
-		rotate(lst_a, 'a');
+		best_move->value = i - ft_lstsize(*lst_a);
+	if (best_move->value < 0)
+		while ((best_move->value)++ < 0)
+			rev_rotate(lst_a, 'a');
+	else	
+		while ((best_move->value)-- > 0)
+			rotate(lst_a, 'a');
 }

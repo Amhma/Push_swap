@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:56:08 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 13:59:49 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 17:24:46 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,16 @@ void	max_lis(t_list **lst)
 	int	*tab;
 
 	tab = init_tab(lst);
-	ft_inverse(lst);
+//	ft_inverse(lst);
 	lis(*lst, tab);
 	fill_lst(lst, tab);
-	ft_inverse(lst);
+//	ft_inverse(lst);
 	free(tab);
 }
 
 void	lst_patch(t_list **lst)
 {
-	if (ft_is_sort(*lst) < 0)
+	if (ft_is_sort(*lst) > 0)
 	{
 		ft_lstclear(lst);
 		exit(EXIT_SUCCESS);

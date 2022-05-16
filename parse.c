@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:54:02 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 16:22:00 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 19:10:31 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	parse(char **av, int ac, t_list **lst)
 			elem = ft_lstnew((int)nb, 0, 'a');
 			if (!elem)
 				ft_error(lst, arg, 0);
-			ft_lstadd_front(lst, elem);
+			ft_lstadd_back(lst, elem);
 		}
 		ft_free_split(arg);
 	}

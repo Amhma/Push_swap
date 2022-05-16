@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 20:09:13 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 14:10:54 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 17:13:15 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,17 @@ void	ft_inverse(t_list **lst)
 	}
 	*lst = prev;
 }
+
 void    ft_rrotate(t_list **lst)
 {
-	t_list  *elem;
-	t_list  *prev;
+    t_list  *elem;
+    t_list  *prev;
 
-	elem = ft_lstlast(*lst);
-	prev = ft_list_at(*lst, ft_lstsize(*lst) - 2);
-	elem->next = *lst;
-	prev->next = NULL;
-	*lst = elem;
+    elem = ft_lstlast(*lst);
+    prev = ft_list_at(*lst, ft_lstsize(*lst) - 2);
+    elem->next = *lst;
+    prev->next = NULL;
+    *lst = elem;
 }
 
 void	rev_rotate(t_list **lst, char c)
