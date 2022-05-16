@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:27:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/14 20:41:10 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 14:17:51 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,15 @@ void	set_nb_stroke(t_list *lst)
 	while (i < size)
 	{
 		elem = ft_list_at(lst, i);
-		if (i == size - 1)
-			elem->value = 0;
-		else if (i <= size / 2)
+		if (i < size / 2)
 			elem->value = i + 1;
 		else
-			elem->value = i - size;
+			elem->value = i - size + 1;
 		i++;
 	}
 }
 
-void	set_nb_stroke_asc(t_list *lst)
+/*void	set_nb_stroke_asc(t_list *lst)
 {
 	int		i;
 	int		size;
@@ -50,7 +48,7 @@ void	set_nb_stroke_asc(t_list *lst)
 			elem->value = i - size;
 		i++;
 	}
-}
+}*/
 
 int	max(int a, int b)
 {
@@ -89,7 +87,7 @@ t_list	*find_next_elem(t_list *lst, int nb_b)
 	return (elem);
 }
 	
-int	tab_max_len(int *tab, int size)
+int	tab_min_len(int *tab, int size)
 {
 	int	i;
 	int	nb[2];

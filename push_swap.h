@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 19:12:20 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/14 20:34:40 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 14:20:14 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void		rotate(t_list **lst, char c);
 void		r_rotate(t_list **lst_a, t_list **lst_b);
 
 //		movement3.c
+void		ft_inverse(t_list **lst);
 void		ft_rrotate(t_list **lst);
 void		rev_rotate(t_list **lst, char c);
 void		r_rev_rotate(t_list **lst_a, t_list **lst_b);
@@ -85,11 +86,11 @@ int			max_tab(int *tab);
 int			ft_abs(int nb);
 
 //		utils_2.c
-int			tab_max_len(int *tab, int size);
+int			tab_min_len(int *tab, int size);
 int			max(int a, int b);
 t_list		*find_next_elem(t_list *lst, int nb_b);
 t_list		*find_elem(t_list *lst, int nb);
 void		set_nb_stroke(t_list *lst);
-void		set_nb_stroke_asc(t_list *lst);
+//void		set_nb_stroke_asc(t_list *lst);
 
 #endif

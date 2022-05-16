@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:56:08 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/14 17:06:57 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 13:59:49 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,36 +83,21 @@ void	fill_lst(t_list **lst, int *tab)
 
 void	max_lis(t_list **lst)
 {
-	int	*tab_up;
-	int	*tab_down;
+	int	*tab;
 
-	tab_up = init_tab(lst);
-	tab_down = init_tab(lst);
-	lis(*lst, tab_up);
-	ft_rrotate(lst);
-	lis(*lst, tab_down);
-	if (tab_down[max_tab(tab_down)] >= tab_up[max_tab(tab_up)])
-	{
-		free(tab_up);
-		fill_lst(lst, tab_down);
-		ft_rrotate(lst);
-		free(tab_down);
-	}
-	else
-	{
-		ft_rrotate(lst);
-		free(tab_down);
-		fill_lst(lst, tab_up);
-		free(tab_up);
-	}
+	tab = init_tab(lst);
+	ft_inverse(lst);
+	lis(*lst, tab);
+	fill_lst(lst, tab);
+	ft_inverse(lst);
+	free(tab);
 }
 
 void	lst_patch(t_list **lst)
 {
-	if (ft_is_sort(*lst) != 0)
+	if (ft_is_sort(*lst) < 0)
 	{
-		if (ft_is_sort(*lst) > 0)
-			rev_rotate(lst, 'a');
+		ft_lstclear(lst);
 		exit(EXIT_SUCCESS);
 	}
 	max_lis(lst);

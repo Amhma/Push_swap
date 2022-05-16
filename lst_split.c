@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:26:25 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/14 20:28:06 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/16 13:34:29 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,10 @@ int	push_it(t_list **lst_a, t_list **lst_b, int med, int *count)
 
 void	lst_split(t_list **lst_a, t_list **lst_b)
 {
-	int	med;
-	int	value;
-	int	count;
+	int		med;
+	int		value;
+	int		count;
+	t_list *elem;
 
 	count = 0;
 	med = search_med(*lst_a);
@@ -110,14 +111,15 @@ void	lst_split(t_list **lst_a, t_list **lst_b)
 	value = split_less_med(*lst_a, med, &count);
 	while (count)
 	{
-		if (value == -2)
+		elem = ft_list_at(*lst_a, ft_lstsize(*lst_a) - 2);
+		if (elem->stack == 'b')
 			swap(lst_a, 'a');
 		else if (value != 0)
 		{
-			if (value < 0)
+			while (value < 0)
 			{
 				rev_rotate(lst_a, 'a');
-				value = (value) * -1;
+				value = (value) + 1;
 			}
 			while (value--)
 				rotate(lst_a, 'a');
