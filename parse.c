@@ -6,13 +6,13 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:54:02 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 19:10:31 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/17 17:10:03 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"push_swap.h"
 
-int check_is_digit(char *str)
+int	check_is_digit(char *str)
 {
 	int	i;
 
@@ -41,7 +41,7 @@ int	check_list(t_list **lst, int nb)
 
 int	check_arg(char *str, long long nb)
 {
-	if (*str && (nb > INT_MAX || nb < INT_MIN))
+	if ((*str && (nb > INT_MAX || nb < INT_MIN)) || ft_strlen(str) > 12)
 		return (0);
 	else if (ft_strlen(str) >= 2 && str[0] == '-' && check_is_digit(str + 1))
 		return (1);
@@ -87,5 +87,4 @@ void	parse(char **av, int ac, t_list **lst)
 		}
 		ft_free_split(arg);
 	}
-}
-		
+}	

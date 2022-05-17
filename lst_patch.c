@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 17:56:08 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 17:24:46 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/17 14:28:54 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	lis(t_list *lst, int *lis)
 		{
 			elem_j = ft_list_at(lst, j);
 			if (elem_i->nb > elem_j->nb && lis[i] < lis[j] + 1)
-				lis[i]= lis[j] + 1;
+				lis[i] = lis[j] + 1;
 			j++;
 		}
 		elem_i = ft_list_at(lst, ++i);
@@ -86,19 +86,33 @@ void	max_lis(t_list **lst)
 	int	*tab;
 
 	tab = init_tab(lst);
-//	ft_inverse(lst);
 	lis(*lst, tab);
 	fill_lst(lst, tab);
-//	ft_inverse(lst);
 	free(tab);
 }
 
 void	lst_patch(t_list **lst)
 {
+	int		i;
+	t_list	*elem;
+
+	i = 0;
+	elem = min_value(*lst);
 	if (ft_is_sort(*lst) > 0)
 	{
 		ft_lstclear(lst);
 		exit(EXIT_SUCCESS);
+	}
+	else if (ft_is_sort_rotate(*lst) > 0 && ft_lstsize(*lst) < 20)
+	{
+		while (ft_list_at(*lst, i) != elem)
+			i++;
+		if (i < ft_lstsize(*lst) / 2)
+			while (*lst != elem)
+				rotate(lst, 'a');
+		else
+			while (*lst != elem)
+				rev_rotate(lst, 'a');
 	}
 	max_lis(lst);
 }

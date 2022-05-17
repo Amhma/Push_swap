@@ -6,17 +6,17 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/02 12:27:11 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/05 14:45:30 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/17 17:47:06 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-int	ft_atoi(const char *nptr)
+long long	ft_atoi(const char *nptr)
 {
-	size_t	i;
-	int		sign;
-	int		nb;
+	size_t		i;
+	int			sign;
+	long long	nb;
 
 	i = 0;
 	sign = 1;

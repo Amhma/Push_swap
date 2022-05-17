@@ -1,28 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_index_lst_at.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 12:29:17 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/17 17:27:52 by amahla           ###   ########.fr       */
+/*   Created: 2022/05/17 14:50:31 by amahla            #+#    #+#             */
+/*   Updated: 2022/05/17 17:47:35 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_index_lst_at(int data_ref, t_list *lst)
 {
-	t_list	*elem;
+	int	i;
 
-	elem = *lst;
-	if (!*lst)
-		*lst = new;
-	else
+	i = 0;
+	while (lst && lst->nb != data_ref)
 	{
-		while (elem->next)
-			elem = elem->next;
-		elem->next = new;
+		i++;
+		lst = lst->next;
 	}
+	return (i);
 }

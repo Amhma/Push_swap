@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/13 20:26:25 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/16 19:22:02 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/17 14:44:03 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,8 @@ int	split_less_med(t_list *lst, int med, int *count)
 	int		value;
 
 	elem = lst;
-	while ((elem && elem->stack == 'a') || (elem && elem->stack == 'b' && elem->nb > med))
+	while ((elem && elem->stack == 'a')
+		|| (elem && elem->stack == 'b' && elem->nb > med))
 		elem = elem->next;
 	if (!elem)
 		return (split_more_med(lst, count));
@@ -79,7 +80,8 @@ int	split_less_med(t_list *lst, int med, int *count)
 	value = elem->value;
 	while (elem)
 	{
-		if (ft_abs(elem->value) < value && elem->stack == 'b' && elem->nb <= med)
+		if (ft_abs(elem->value) < value && elem->stack == 'b'
+			&& elem->nb <= med)
 		{
 			value = elem->value;
 			(*count)++;
@@ -102,7 +104,6 @@ void	lst_split(t_list **lst_a, t_list **lst_b)
 	int		med;
 	int		value;
 	int		count;
-	t_list *elem;
 
 	count = 0;
 	med = search_med(*lst_a);
@@ -110,15 +111,15 @@ void	lst_split(t_list **lst_a, t_list **lst_b)
 	value = split_less_med(*lst_a, med, &count);
 	while (count)
 	{
-		elem = *lst_a;
-		if (elem->next && elem->next->stack == 'b')
+		if ((*lst_a)->next && (*lst_a)->next->stack == 'b'
+			&& (*lst_a)->stack == 'a')
 			swap(lst_a, 'a');
 		else if (value != 0)
 		{
 			while (value < 0)
 			{
 				rev_rotate(lst_a, 'a');
-				value = (value) + 1;
+				value = value + 1;
 			}
 			while (value--)
 				rotate(lst_a, 'a');

@@ -1,28 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/02 12:29:17 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/17 17:27:52 by amahla           ###   ########.fr       */
+/*   Created: 2022/03/25 19:26:19 by amahla            #+#    #+#             */
+/*   Updated: 2022/05/17 17:27:28 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+t_list	*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
-	t_list	*elem;
+	unsigned int	i;
 
-	elem = *lst;
-	if (!*lst)
-		*lst = new;
-	else
+	i = 0;
+	while (begin_list)
 	{
-		while (elem->next)
-			elem = elem->next;
-		elem->next = new;
+		if (i == nbr)
+			return (begin_list);
+		begin_list = begin_list->next;
+		i++;
 	}
+	return (NULL);
 }
