@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/14 18:53:15 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/17 18:25:21 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/18 12:23:55 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	final_sort(t_list **lst_a)
 	t_list	*last_move;
 
 	i = ft_index_lst_at(min_list(*lst_a), *lst_a);
-	last_move = find_elem(*lst_a, i);
+	last_move = ft_list_at(*lst_a, i);
 	if (i < ft_lstsize(*lst_a) / 2)
 		last_move->value = i;
 	else

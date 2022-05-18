@@ -6,7 +6,7 @@
 /*   By: amahla <amahla@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 12:54:02 by amahla            #+#    #+#             */
-/*   Updated: 2022/05/17 17:10:03 by amahla           ###   ########.fr       */
+/*   Updated: 2022/05/18 16:10:49 by amahla           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	check_arg(char *str, long long nb)
 
 void	ft_error(t_list **lst, char **split, int i)
 {
-	if (i)
+	if (i || (split && !split[0]))
 		ft_putendl_fd("Error", 2);
 	if (split)
 		ft_free_split(split);
@@ -73,7 +73,7 @@ void	parse(char **av, int ac, t_list **lst)
 	{
 		i = -1;
 		arg = ft_split(av[y], ' ');
-		if (!arg)
+		if (!arg || !arg[0])
 			ft_error(lst, arg, 0);
 		while (arg[++i])
 		{
